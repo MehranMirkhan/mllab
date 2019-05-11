@@ -14,6 +14,8 @@ vis = visdom.Visdom()
 def batch_callback(model, loss_width):
     counter = 0
     y = []
+    vis.line(X=[0], Y=[[0, 0]], win='loss',
+             opts={'legend': ['dis', 'gen']})
 
     def callback(epoch, batch_index, loss):
         nonlocal counter
@@ -23,9 +25,6 @@ def batch_callback(model, loss_width):
             sample = sample.numpy().reshape((-1, 1, 28, 28))
             sample = sample * 0.5 + 0.5
             vis.images(sample, win='gen')
-        # vis.line(X=[counter], Y=[loss],
-        #          update=update, win='loss',
-        #          opts={'legend': ['dis', 'gen']})
         y.append(list(loss))
         if len(y) > loss_width:
             y.pop(0)
