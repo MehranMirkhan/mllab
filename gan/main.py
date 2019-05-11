@@ -1,6 +1,7 @@
 
 from tqdm import tqdm
 import visdom
+import numpy as np
 
 from experiment import ex
 from dataset import MNIST
@@ -24,6 +25,9 @@ def batch_callback(model, loss_width):
             sample = model.generate().detach()
             sample = sample.numpy().reshape((-1, 1, 28, 28))
             sample = sample * 0.5 + 0.5
+            scale = 2
+            sample = np.repeat(sample, scale, axis=2)
+            sample = np.repeat(sample, scale, axis=3)
             vis.images(sample, win='gen')
         y.append(list(loss))
         if len(y) > loss_width:
