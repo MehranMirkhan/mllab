@@ -30,14 +30,16 @@ def render(world, observation):
 
 @ex.automain
 def main():
-    env = gym.make("FrozenLake8x8-v0")
+    env = gym.make("FrozenLake8x8-v0", is_slippery=False)
     observation = env.reset()
     for _ in range(100):
-        world = env.render(mode='ansi')
-        render(world, observation)
+        # world = env.render(mode='ansi')
+        # render(world, observation)
+        env.render()
         action = env.action_space.sample()
+        print(action)
         observation, reward, done, info = env.step(action)
-        time.sleep(0.05)
+        time.sleep(1)
 
         if done:
             observation = env.reset()
