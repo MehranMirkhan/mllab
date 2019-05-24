@@ -5,4 +5,4 @@ ex = Experiment('CYRUS')
 
 @ex.config
 def config():
-    pass
+    physics_lr = 1e-3
