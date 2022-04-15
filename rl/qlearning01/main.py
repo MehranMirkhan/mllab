@@ -55,7 +55,7 @@ class RLSys(object):
 
 class FrozenLakeWrapper(object):
     def __init__(self):
-        self.env = gym.make("FrozenLake-v0", is_slippery=False)
+        self.env = gym.make("FrozenLake-v1", is_slippery=False)
         # self.env = gym.make("FrozenLake8x8-v0", is_slippery=False)
         self.success_counter = 0
 

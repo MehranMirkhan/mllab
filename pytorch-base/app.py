@@ -12,13 +12,13 @@ ex = Experiment('pytorch-base')
 #-------------------------- CONFIG
 @ex.config
 def config():
-    arch = [28*28, 48, 10]
+    arch = [28*28, 128, 10]
     criterion = torch.nn.CrossEntropyLoss
     optimizer = torch.optim.Adam
     learning_rate = 1e-3
     dataset_root = './data'
     batch_size = 64
-    epochs = 3
+    epochs = 10
 
 def imshow(img):
     img = img / 2 + 0.5     # unnormalize

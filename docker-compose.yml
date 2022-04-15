@@ -1,0 +1,7 @@
+version: '3.9'
+services:
+  visdom:
+    container_name: visdom
+    image: hypnosapos/visdom
+    ports:
+      - "8097:8097"
